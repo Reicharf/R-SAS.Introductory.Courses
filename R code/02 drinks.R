@@ -1,12 +1,7 @@
-# Do this after break:
-# 1. File > New File > R Script
-# 2. Set working directory
-# 3. Import drinks file into object "dataset"
-# 4. Think about whether columns are formatted correctly
-
-rm(list=ls())
-setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Datasets")
-dataset <- read.delim("02 drinks.txt")
+# Usual first lines of code for any project:
+rm(list=ls()) # Clean up environment
+setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Datasets") # Set working directory
+dataset <- read.delim("02 drinks.txt") # Import file
 
 # correct formatting for columns
 dataset$Person <- as.factor(dataset$Person)
@@ -14,14 +9,15 @@ dataset$drinks <- as.numeric(dataset$drinks)
 
 library(data.table)
 DT <- data.table(dataset) # data.table format for advantageous functions
-DT[, max(drinks), by=Person] # maximum number of drinks per person
+DT[, max(drinks), by=Person] # look at maximum number of drinks per person
 
 # plot data for first impression
 plot(x=DT$Person, y=DT$blood_alc) # factor  - numeric : boxplot
 plot(x=DT$drinks, y=DT$blood_alc) # numeric - numeric : scatter plot
 
 # correlation
-cor.test(DT$drinks, DT$blood_alc)
+cor(DT$drinks, DT$blood_alc) # only returns the correlation estimate
+cor.test(DT$drinks, DT$blood_alc) # also returns e.g. p-value
  # r = 0.956 (p<0.0001)
 
 # simple linear regression
@@ -29,8 +25,8 @@ reg <- lm(data    = DT,
           formula = blood_alc ~               drinks)
                   #    y      = a    + b    *   x
                   # blood_alc = 0.05 + 0.12 * drinks
-reg
-summary(reg) # get more than default
+reg # this object contains all results of fitting the regression
+summary(reg) # show more of the results contained in the object
 abline(reg)  # add regression line to plot
 
 # simple linear regression without intercept
