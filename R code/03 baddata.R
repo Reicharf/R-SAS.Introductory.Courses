@@ -25,47 +25,45 @@ cor.test(data$Vision, data$Ages) # r= -0.5 (p=0.007)
 # 4.
 reg <- lm(data    = data,
           formula = Vision ~ Ages)
-reg # Vision = 11.1 - 0.09 * Ages     R²=0.22
+reg # Vision = 11.1 - 0.09 * Ages     RÂ²=0.22
 # 5.
 abline(reg)
 summary(reg)
 
-###########################################
-# Everything again, but without outlier
+### Who is the outlier?
+bdat.dt[Vision < 5] # Rolando is the oulier!
 
-# Who is the outlier?
-data[Vision < 5,] # It is Rolando!
+### Create a subset of our data without Rolando
+bdat.nr <- bdat.dt[Vision > 5]          # Option 1
+bdat.nr <- bdat.dt[Person != "Rolando"] # Option 2
 
-# create a subset of our data without Rolando
-data.nr <- data[Vision > 5,]
+# Correlation without Rolando
+cor.test(bdat.nr$Vision, bdat.nr$Ages) # r= -0.7 (p<0.0001)
 
-# 2.
-plot(y=data.nr$Vision, x=data.nr$Ages, ylim=c(0, 10))
-# 3.
-cor.test(data.nr$Vision, data.nr$Ages) # r= -0.7 (p<0.001)
-# 4.
-reg.nr<- lm(data    = data.nr,
-               formula = Vision ~ Ages)
-reg.nr # Vision = 11.7 - 0.10 * Ages     R²=0.46
-# 5.
+# Regression without Rolando
+reg.nr <- lm(data    = bdat.nr,
+             formula = Vision ~ Ages)
+reg.nr # Vision = 11.7 - 0.10 * Ages  
+summary(reg.nr) # RÂ² = 0.46
+
+# Plot without Rolando
+plot(y=bdat.nr$Vision, x=bdat.nr$Ages, 
+     ylim=c(0, 10), xlim=c(0,100))
 abline(reg.nr)
-summary(reg.nr)
 
 ##########################################################
 # Create plot with more options via ggplot() function
 
+#install.packages("ggplot2")
 library(ggplot2)
 
-p <- ggplot(data=data.nr, aes(x=Ages, y=Vision))
+p <- ggplot(data=bdat.nr, aes(x=Ages, y=Vision))
 p <- p + geom_point(color="red", size=3, shape=17)
 p <- p + ylab("Person's vision")
 p <- p + xlab("Person's age")
 p <- p + theme_minimal()
 p <- p + scale_y_continuous(limits=c(0,10), breaks=c(1,2,8,9))
 p <- p + stat_smooth(method="lm", se=FALSE, color="green")
-p <- p + geom_text(aes(y=2, x=30, label="R² = 0.46"))
+p <- p + geom_text(aes(y=2, x=40, label="RÂ² = 0.46"))
 
 p # show plot 
-
-
-
