@@ -17,6 +17,8 @@ PROC SGPLOT DATA=crd;
 VBOX Yield /CATEGORY=Variety;
 RUN;
 
+/* Fit model */
+/*************/
 * Step 1: Check F-Test of ANOVA;
 * Step 2: Compare adjusted means per level;
 
