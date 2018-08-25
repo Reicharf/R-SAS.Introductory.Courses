@@ -17,16 +17,18 @@ PROC SGPLOT DATA=crd;
 VBOX Yield /CATEGORY=Variety;
 RUN;
 
-/* Fit model */
-/*************/
+/* Fit general linear model */
+/****************************/
+* Treatment effects: Variety;
+* Design effects:    - ;
 * Step 1: Check F-Test of ANOVA;
 * Step 2: Compare adjusted means per level;
 
-PROC GLIMMIX DATA=crd PLOTS=RESIDUALPANEL;	* Show residual plots
-CLASS Variety;         				* List all categorical variables in CLASS;
-MODEL Yield = Variety;				* 1 Treatment effect = "Variety";
-LSMEANS Variety /PDIFF LINES ADJUST=TUKEY;	* pairwise differences between adj. means for Varieties with Tukey-test;
-ODS OUTPUT LSMeans=mytable; 			* Extracts adjusted means table;
+PROC GLIMMIX DATA=crd PLOTS=RESIDUALPANEL;  * Show residual plots
+CLASS Variety;                              * List all categorical variables in CLASS;
+MODEL Yield = Variety;
+LSMEANS Variety /PDIFF LINES ADJUST=TUKEY;  * pairwise differences between adj. means for Varieties with Tukey-test;
+ODS OUTPUT LSMeans=mytable;                 * Extracts adjusted means table;
 RUN;
 
 /* Modify adjusted means table in order to plot it */
