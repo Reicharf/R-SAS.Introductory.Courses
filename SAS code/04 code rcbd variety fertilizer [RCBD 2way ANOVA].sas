@@ -48,7 +48,7 @@ RUN;
 PROC GLIMMIX DATA=rcbd2 PLOTS=RESIDUALPANEL;	* Show residual plots;
 CLASS Variety Fertilizer Block;
 MODEL Yield = Variety Block;
-LSMEANS Variety /PDIFF LINES;
+LSMEANS Variety /PDIFF LINES;                   * pairwise differences between adj. means for Varieties with Tukey-test;
 RUN; 
 * Only variety is significant - final model;
 * Note 1: Design effects stay in the model even if not significant;
