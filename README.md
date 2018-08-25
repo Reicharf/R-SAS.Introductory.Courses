@@ -1,4 +1,4 @@
-## Welcome to the "Statistical Analyses with R/SAS" introductory course GitHub page
+## Welcome to the "Statistical Analyses with R/SAS" introductory course GitHub
 
 Here you can find the example datasets as well as the latest codes applied in the courses. Please go to the respective folder above.
 Don't hesitate to contact me about any of this.
