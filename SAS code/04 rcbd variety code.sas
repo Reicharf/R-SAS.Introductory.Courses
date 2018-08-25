@@ -24,7 +24,7 @@ RUN;
 * Step 1: Check F-Test of ANOVA;
 * Step 2: Compare adjusted means per level;
 
-PROC GLIMMIX DATA=rcbd PLOTS=RESIDUALPANEL;	* Show residual plots
+PROC GLIMMIX DATA=rcbd PLOTS=RESIDUALPANEL;	* Show residual plots;
 CLASS Variety Block;                            * List all categorical variables in CLASS;
 MODEL Yield = Variety Block;
 LSMEANS Variety /PDIFF LINES;                   * pairwise differences between adj. means for Varieties with Tukey-test;
