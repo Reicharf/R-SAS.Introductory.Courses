@@ -13,11 +13,11 @@ Please follow these two steps to register for any of the future courses:
 #### Where can I get biometrical consulting?
 The [Biostatistics group](https://www.uni-hohenheim.de/en/organization/institution/fg-biostatistik) offers statistical consulting for the design and analysis of experiments and surveys.
 We expect that your supervisor is informed about the fact that you will be consulting with us. We very much welcome your supervisor(s) to take part in any meeting with us. Please be prepared to give a concise and brief description of your problem at the beginning of a consulting session.
-Filippo Capezzone: filippo.capezzone@uni-hohenheim.de
-Dr. Jens Möhring: moehring@uni-hohenheim.de
-Prof. Dr. Piepho: piepho@uni-hohenheim.de
+* Filippo Capezzone: filippo.capezzone@uni-hohenheim.de
+* Dr. Jens Möhring: moehring@uni-hohenheim.de
+* Prof. Dr. Piepho: piepho@uni-hohenheim.de
 
-
+<br /> <br/>
 Don't hesitate to contact me about any of this.
 
 Paul Schmidt <br />
