@@ -30,13 +30,13 @@ summary(reg) # show more of the results contained in the object
 abline(reg)  # add regression line to plot
 
 # simple linear regression without intercept
-reg2 <- lm(data    = DT,
-           formula = blood_alc ~ 0 +        drinks)
-                   #    y      = 0 + b    *   x
-                   # blood_alc = 0 + 0.13 * drinks
-reg2
-summary(reg2)
-abline(reg2)
+reg.noint <- lm(data    = DT,
+                formula = blood_alc ~ 0 +        drinks)
+                        #    y      = 0 + b    *   x
+                        # blood_alc = 0 + 0.13 * drinks
+reg.noint
+summary(reg.noint)
+abline(reg.noint)
 
 #####################################################
 # more plotting options with default plot() function
@@ -44,4 +44,4 @@ abline(reg2)
 plot(x=DT$drinks, y=DT$blood_alc)
 # new
 plot(x=DT$drinks, y=DT$blood_alc, xlim = c(0,10), ylim = c(0, 2))
-abline(reg2)
+abline(reg.noint)
