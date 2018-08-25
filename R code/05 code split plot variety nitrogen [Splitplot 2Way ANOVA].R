@@ -2,9 +2,15 @@ rm(list=ls())
 setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Datasets")
 
 library(data.table)
-dt <- fread("05 split plot variety nitrogen.txt") # directly import as data.table format
+dt <- fread("05 split plot variety nitrogen.txt") # directly import as data.table format via fread()
 
-# splot plot design - two factor effects
+dt$Block <- as.factor(dt$Block)
+dt$N     <- as.factor(dt$N)
+dt$Var   <- as.factor(dt$Var)
+dt$Yield <- as.numeric(dt$Yield)
+
+# Split Plot Design 
+# Two-Way ANOVA
 
 ### Split Plot Design 
 # When some factors (independent variables) are difficult 
@@ -15,42 +21,52 @@ dt <- fread("05 split plot variety nitrogen.txt") # directly import as data.tabl
 # (or easy-to-change) factors. The hard-to-change factors 
 # are implemented first, followed by the easier-to-change factors.
 
-dt$Block <- as.factor(dt$Block)
-dt$N     <- as.factor(dt$N)
-dt$Var   <- as.factor(dt$Var)
-dt$Yield <- as.numeric(dt$Yield)
-
-table(dt$Var, dt$N, dt$Block)
-
 # boxplots for first impression
 boxplot(data=dt, Yield ~ N + Var, las=2)
 boxplot(data=dt, Yield ~ N      , las=2)
 boxplot(data=dt, Yield ~ Var    , las=2)
 
 # In a split-plot design, the (incomplete) mainplots should
-# be taken as a "random effect". Since we then have random and
-# fixed effects in one model, we are fitting a "mixed model".
-# In R the most common packages for that are "lme4", "nlme",
-# "asreml-R" and "sommer".
+# be taken as a "random effect". As a general principle, 
+# each randomization units needs to be represented by a random effect, 
+# so each randomization unit has its own error term. 
+# Since we then have random and fixed effects
+# in one model, we are fitting a "mixed model".
+# In R the most common packages for that are "lme4", "nlme", "asreml-R" and "sommer".
 
 # If you use lme4, always load the lmerTest package, too
+#install.packages("lme4")
+#install.packages("lmerTest")
 library(lme4)
 library(lmerTest)
 
-# build the mixed model
+# Fit general linear mixed model 
+#################################
+# Treatment effects: Variety, Fertilizer and their interaction
+# Design effects:    Block and mainplot(=random effect)
+# Step 1: Check F-Test of ANOVA and perform backwards elimination
+# Step 2: Compare adjusted means per level
 mod <- lmer(data    = dt,
             formula = Yield ~ N + Var + N:Var + 
                       Block + (1|Block:N))
 
-anova(mod) # interaction effect significant!
+# Note: In this example, Block*N identifies the incomplete blocks (=main plots) within each complete block. 
+# To read more about this example, see p. 59 of Prof. Piepho's lecture notes for "Mixed models for metric data"
 
-# get adj. means for interaction effect and compare
+anova(mod) # Interaction effect significant - final model
+#plot(mod)   # Residual plots
+mod          # Basic results
+summary(mod) # More detailed results
+
+# get adj. means for Variety effect and compare
+#install.packages("multcompView")
+#install.packages("emmeans")
 library(emmeans) # also needs package multcompView to be installed
 
 # get means and comparisons
 means <- emmeans(mod, pairwise ~ N | Var) 
    # Note that N | Var gets pairwise N comparisons for each
-   # Variety separately. You can use N*Var instead to get all
+   # Variety separately. You can use N:Var instead to get all
    # pairwise comparisons.
 
 means # look at means and comparisons
@@ -62,9 +78,10 @@ output # this data format is not good for ggplot
 output <- as.data.table(output$emmeans) # reformatting into one table
 output # this is better
 
-###########################################################
-# draw lsmeans graph in ggplot
+# plot adjusted means
+#install.packages("ggplot2")
 library(ggplot2)
+
 p <- ggplot(data=output, aes(x=N))
 p <- p + geom_bar(aes(y=emmean), stat="identity", width=0.8) 
 p <- p + geom_errorbar(aes(ymin=emmean-SE, ymax=emmean+SE), width=0.4)

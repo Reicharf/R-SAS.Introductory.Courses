@@ -1,35 +1,44 @@
 rm(list=ls())
 setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Datasets")
-rcbd2f <- read.delim("04 rcbd variety nitrogen.txt")
+rcbd2 <- read.delim("04 rcbd variety nitrogen.txt")
 
-# randomized complete block design - two factor effects
+# Randomized Complete Block Design
+# Two-Way ANOVA
 
-rcbd2f$Variety    <- as.factor(rcbd2f$Variety)
-rcbd2f$Fertilizer <- as.factor(rcbd2f$Fertilizer)
-rcbd2f$Block      <- as.factor(rcbd2f$Block)
+rcbd2$Variety    <- as.factor(rcbd2f$Variety)
+rcbd2$Fertilizer <- as.factor(rcbd2f$Fertilizer)
+rcbd2$Block      <- as.factor(rcbd2f$Block)
 
-plot(y=rcbd2f$Yield, x=rcbd2f$Variety)
-plot(y=rcbd2f$Yield, x=rcbd2f$Fertilizer)
-plot(y=rcbd2f$Yield, x=rcbd2f$Block)
-boxplot(data=rcbd2f, Yield ~ Variety + Fertilizer, las=2)
+# plot for first impression
+plot(y=rcbd2$Yield, x=rcbd2$Variety)
+plot(y=rcbd2$Yield, x=rcbd2$Fertilizer)
+plot(y=rcbd2$Yield, x=rcbd2$Block)
+boxplot(data=rcbd2, Yield ~ Variety + Fertilizer, las=2)
 
-# linear model with Var, Fert and their intercation (=Treatment) effects 
-# and block (=Design) effect
-mod <- lm(data    = rcbd2f,
+# Fit general linear model 
+###########################
+# Treatment effects: Variety, Fertilizer and their interaction
+# Design effects:    Block
+# Step 1: Check F-Test of ANOVA and perform backwards elimination
+# Step 2: Compare adjusted means per level
+mod <- lm(data    = rcbd2,
           formula = Yield ~ Variety + Fertilizer +
                             Variety:Fertilizer + Block)
 
-mod
-summary(mod)
-anova(mod) # interaction effect is not significant.
+anova(mod) # Interaction is not significant
+mod2 <- update(mod, . ~ . -Variety:Fertilizer) # eliminate from model
 
-mod2 <- update(mod, . ~ . -Variety:Fertilizer) # remove it from model
 anova(mod2) # Fertilizer is not significant
+mod3 <- update(mod2, . ~ . -Fertilizer) # eliminate from model
 
-mod3 <- update(mod2, . ~ . -Fertilizer) # remove it from model
-anova(mod3)# Variety effect is significant ANOVA
+anova(mod3) # Variety is significant - Final model found!
+#plot(mod3)   # Residual plots
+mod3          # Basic results
+summary(mod3) # More detailed results
 
 # get adj. means for Variety effect and compare
+#install.packages("multcompView")
+#install.packages("emmeans")
 library(emmeans) # also needs package multcompView to be installed
 
 # get means and comparisons
@@ -41,7 +50,8 @@ means$contrasts # look at comparions
 # add letters indicating significant differences
 output <- cld(means$emmeans, details=T, Letters = letters)
 
-# plot results
+# plot adjusted means
+#install.packages("ggplot2")
 library(ggplot2)
 p <- ggplot(data=output$emmeans, aes(x=Variety))
 p <- p + geom_bar(aes(y=emmean), stat="identity", width=0.8)
