@@ -4,13 +4,11 @@ Here you can find the example datasets as well as the latest codes applied in th
 
 #### How to join a course
 Please follow these two steps to register for any of the future courses:
-
-(1) Join the respective ILIAS group:
-Statistical Analyses with R - Introductory Course (winter and summer semester): http://tinyurl.com/joinRcourses
-Statistical Analyses with SAS - Introductory Course (winter and summer semester): http://tinyurl.com/joinSAScourses
-(you must be logged into ILIAS first to make the links work)
-
-(2) Within the group, scroll down and select the specific course you want to join.
+1. Join the respective ILIAS group:
+  * Statistical Analyses with R - Introductory Course (winter and summer semester): http://tinyurl.com/joinRcourses
+  * Statistical Analyses with SAS - Introductory Course (winter and summer semester): http://tinyurl.com/joinSAScourses
+  * *(you must be logged into ILIAS first to make the links work)*
+2. Within the group, scroll down and select the specific course you want to join.
 
 #### Where can I get biometrical consulting?
 The [Biostatistics group](https://www.uni-hohenheim.de/en/organization/institution/fg-biostatistik) offers statistical consulting for the design and analysis of experiments and surveys.
