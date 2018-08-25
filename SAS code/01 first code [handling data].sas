@@ -1,20 +1,8 @@
-DATA Fertiliser; *This is a comment;
-INPUT Variety$ Fert$ Block; *$ tells SAS it is a character variable;
-DATALINES;
-Limbo A 1
-Limbo B 1
-Keimige A 1
-Keimige B 1
-Hardy A 1
-Hardy B 1
-;RUN;
+* This is a way to write a comment ;
+/* This is also a way to write a comment */
 
-PROC PRINT DATA=Fertiliser; 
-RUN;
-
-*  Way 1 of writing a comment ;
-/* Way 2 of writing a comment */
-
+/* Creating two small datasets named "a" and "b"*/
+/************************************************/
 DATA a;
 INPUT Trt$ y;
 DATALINES;
@@ -22,6 +10,10 @@ A 1
 B 2
 C 3
 ;RUN;
+
+* Print dataset in order to check whether everything worked;
+PROC PRINT DATA=a; 
+RUN;
 
 DATA b;
 INPUT Trt$ y;
@@ -31,17 +23,21 @@ E 2
 F 3
 ;RUN;
 
-*Print both datasets!;
-PROC PRINT DATA=a; RUN;
-PROC PRINT DATA=b; RUN;
+PROC PRINT DATA=b;
+RUN;
 
-*add two datasets underneath each other;
+/* add the two datasets "a" and "b" underneath each other and call the resulting dataset "c" */
+/*********************************************************************************************/
 DATA c;
 SET a b;
 RUN;
 
-*add two datasets next to each other;
-* Step 1: rename trt columns;
+PROC PRINT DATA=c;
+RUN;
+
+/* merge the two datasets "a" and "b" by their common y values and call the resulting dataset "d" */
+/**************************************************************************************************/
+* Step 1: rename trt columns in both datasets so that they dont have the same name;
 DATA a;
 SET a;
 RENAME trt=trt_a;
@@ -52,13 +48,17 @@ SET b;
 RENAME trt=trt_b;
 RUN;
 
-* Step 2: merge a & b according to y-column;
+* Step 2: merge a & b according to values in y-column;
 DATA d;
 MERGE a b;
 BY y;
 RUN;
 
-* adding columns etc.;
+PROC PRINT DATA=d;
+RUN;
+
+/* adding columns and other dataset manipulations */
+/**************************************************/
 DATA a2;
 SET a;
 newcolumn = "text";
@@ -68,26 +68,11 @@ IF trt_A    = "A" THEN extra_y=5;
 IF triple_y > 7   THEN extra_y=99;
 RUN; 
 
-* sorting;
+PROC PRINT DATA=a2;
+RUN;
+
+/* Sort the dataset by the "extra_y" column in descending order */
+/****************************************************************/
 PROC SORT DATA=a2;
 BY DESCENDING extra_y;
 RUN;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
