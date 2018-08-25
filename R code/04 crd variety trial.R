@@ -2,35 +2,45 @@ rm(list=ls())
 setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Datasets")
 crd <- read.delim("04 crd variety.txt")
 
-# Completely randomized design - one factor effect
+# Completely randomized design (CRD)
+# One-Way ANOVA
 
-crd$Variety  <- as.factor(crd$Variety)
+crd$Variety   <- as.factor(crd$Variety)
 crd$Replicate <- as.factor(crd$Replicate)
 
 # plot for first impression
 plot(y=crd$Yield, x=crd$Variety)
 
-# linear model with Variety as factor effect
+# Fit general linear model 
+###########################
+# Treatment effects: Variety
+# Design effects:    -
+# Step 1: Check F-Test of ANOVA
+# Step 2: Compare adjusted means per level
 mod <- lm(data    = crd,
           formula = Yield ~ Variety)
 
-mod
-summary(mod)
-anova(mod) # Variety effect is significant ANOVA
+#plot(mod)   # Residual plots
+mod          # Basic results
+summary(mod) # More detailed results
+anova(mod)   # ANOVA-table: Variety effect is significant
 
-# get adj. means for Variety effect and compare
+#install.packages("multcompView")
+#install.packages("emmeans")
 library(emmeans) # also needs package multcompView to be installed
 
 # get means and comparisons
 means  <- emmeans(mod, pairwise ~ Variety)
-means # look at means and comparisons
+means # look at means and differences between means
 means$emmeans   # look at means
-means$contrasts # look at comparions
+means$contrasts # look at differences between means
 
-# add letters indicating significant differences
-output <- cld(means$emmeans, details=T, Letters = letters)
+# add letters indicating significant differences between means
+output <- cld(means$emmeans, details=T, Letters=letters)
 
-# plot results
+# plot adjusted means
+
+#install.packages("ggplot2")
 library(ggplot2)
 p <- ggplot(data=output$emmeans, aes(x=Variety))
 p <- p + geom_bar(aes(y=emmean), stat="identity", width=0.8)
