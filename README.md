@@ -3,7 +3,7 @@
 Here you can find the example datasets as well as the latest codes applied in the courses. Please go to the respective folder above.
 Don't hesitate to contact me about any of this.
 
-Paul Schmidt
+Paul Schmidt <br />
 paul.schmidt@uni-hohenheim.de, 
 [LinkedIn](https://www.linkedin.com/in/schmidtpaul1989/), 
 [ResearchGate](https://www.researchgate.net/profile/Paul_Schmidt17)
