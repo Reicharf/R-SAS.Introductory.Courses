@@ -22,10 +22,11 @@ boxplot(data=rcbd, Yield ~ Variety + Block, las=2)
 mod <- lm(data    = rcbd,
           formula = Yield ~ Variety + Block)
 
-#plot(mod)   # Residual plots
-mod          # Basic results
-summary(mod) # More detailed results
-anova(mod)   # ANOVA-table: Variety effect is significant
+library(ggfortify)
+autoplot(mod) # Residual plots
+mod           # Basic results
+summary(mod)  # More detailed results
+anova(mod)    # ANOVA-table: Variety effect is significant
 
 # get adj. means for Variety effect and compare
 #install.packages("multcompView")

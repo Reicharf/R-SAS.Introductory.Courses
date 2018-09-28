@@ -54,7 +54,8 @@ mod <- lmer(data    = dt,
 # To read more about this example, see p. 59 of Prof. Piepho's lecture notes for "Mixed models for metric data"
 
 anova(mod) # Interaction effect significant - final model
-#plot(mod)   # Residual plots
+# plot(mod)                              # residual plot 1
+# qqnorm(resid(mod)); qqline(resid(mod)) # residual plot 2
 mod          # Basic results
 summary(mod) # More detailed results
 

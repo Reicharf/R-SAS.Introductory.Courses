@@ -47,3 +47,5 @@ mod <- lme(data   = dat,
            random = ~ 1|plotID,
            correlation = corAR1())
 anova(mod) # Trt:Soil:Week is not significant - drop from model.
+# plot(mod)                              # residual plot 1
+# qqnorm(resid(mod)); qqline(resid(mod)) # residual plot 2

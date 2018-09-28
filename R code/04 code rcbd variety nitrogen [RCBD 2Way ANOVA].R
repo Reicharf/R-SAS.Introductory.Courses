@@ -32,9 +32,10 @@ anova(mod2) # Fertilizer is not significant
 mod3 <- update(mod2, . ~ . -Fertilizer) # eliminate from model
 
 anova(mod3) # Variety is significant - Final model found!
-#plot(mod3)   # Residual plots
-mod3          # Basic results
-summary(mod3) # More detailed results
+library(ggfortify)
+autoplot(mod3) # Residual plots
+mod3           # Basic results
+summary(mod3)  # More detailed results
 
 # get adj. means for Variety effect and compare
 #install.packages("multcompView")
