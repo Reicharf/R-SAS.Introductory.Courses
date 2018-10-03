@@ -43,7 +43,7 @@ summary(mod3)  # More detailed results
 library(emmeans) # also needs package multcompView to be installed
 
 # get means and comparisons
-means  <- emmeans(mod, pairwise ~ Variety)
+means  <- emmeans(mod, pairwise ~ Variety, adjust = "tukey") # to get t-test: adjust="none"
 means # look at means and comparisons
 means$emmeans   # look at means
 means$contrasts # look at comparions

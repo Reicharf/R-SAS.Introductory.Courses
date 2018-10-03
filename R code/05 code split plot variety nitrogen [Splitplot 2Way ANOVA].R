@@ -65,7 +65,7 @@ summary(mod) # More detailed results
 library(emmeans) # also needs package multcompView to be installed
 
 # get means and comparisons
-means <- emmeans(mod, pairwise ~ N | Var) 
+means <- emmeans(mod, pairwise ~ N | Var, adjust = "tukey") # to get t-test: adjust="none"
    # Note that N | Var gets pairwise N comparisons for each
    # Variety separately. You can use N:Var instead to get all
    # pairwise comparisons.

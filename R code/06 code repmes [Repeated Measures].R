@@ -113,7 +113,7 @@ qqnorm(resid(mod.ar)); qqline(resid(mod.ar))
 anova(mod.ar) # all effects significant - final model
 
 # get means and comparisons
-means <- emmeans(mod.ar, pairwise ~ week | var) 
+means <- emmeans(mod.ar, pairwise ~ week | var, adjust = "tukey") # to get t-test: adjust="none"
 # Note that week | var gets pairwise vat comparisons for each
 # week separately. You can use weeK.var instead to get all
 # pairwise comparisons.

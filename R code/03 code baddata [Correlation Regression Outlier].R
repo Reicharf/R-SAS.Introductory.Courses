@@ -31,23 +31,23 @@ abline(reg)
 summary(reg)
 
 ### Who is the outlier?
-bdat.dt[Vision < 5] # Rolando is the oulier!
+data[Vision < 5] # Rolando is the oulier!
 
 ### Create a subset of our data without Rolando
-bdat.nr <- bdat.dt[Vision > 5]          # Option 1
-bdat.nr <- bdat.dt[Person != "Rolando"] # Option 2
+data.nr <- data[Vision > 5]          # Option 1
+data.nr <- data[Person != "Rolando"] # Option 2
 
 # Correlation without Rolando
-cor.test(bdat.nr$Vision, bdat.nr$Ages) # r= -0.7 (p<0.0001)
+cor.test(data.nr$Vision, data.nr$Ages) # r= -0.7 (p<0.0001)
 
 # Regression without Rolando
-reg.nr <- lm(data    = bdat.nr,
+reg.nr <- lm(data    = data.nr,
              formula = Vision ~ Ages)
 reg.nr # Vision = 11.7 - 0.10 * Ages  
 summary(reg.nr) # R² = 0.46
 
 # Plot without Rolando
-plot(y=bdat.nr$Vision, x=bdat.nr$Ages, 
+plot(y=data.nr$Vision, x=data.nr$Ages, 
      ylim=c(0, 10), xlim=c(0,100))
 abline(reg.nr)
 
@@ -57,13 +57,13 @@ abline(reg.nr)
 #install.packages("ggplot2")
 library(ggplot2)
 
-p <- ggplot(data=bdat.nr, aes(x=Ages, y=Vision))
-p <- p + geom_point(color="red", size=3, shape=17)
+p <- ggplot(data=data.nr, aes(x=Ages, y=Vision))
+p <- p + geom_point(color="purple", size=3, shape=17)
 p <- p + ylab("Person's vision")
 p <- p + xlab("Person's age")
 p <- p + theme_minimal()
 p <- p + scale_y_continuous(limits=c(0,10), breaks=c(1,2,8,9))
-p <- p + stat_smooth(method="lm", se=FALSE, color="green")
-p <- p + geom_text(aes(y=2, x=40, label="R² = 0.46"))
+p <- p + stat_smooth(method="lm", se=FALSE, color="orange")
+p <- p + geom_text(aes(y=2, x=40, label="R2 = 0.46"))
 
 p # show plot 
