@@ -122,7 +122,7 @@ means # look at means and comparisons
 means$emmeans   # look at means
 means$contrasts # look at comparions
 
-output <- cld(means$emmeans, details=T, Letters = letters)
+output <- CLD(means$emmeans, details=T, Letters = letters)
 output # this data format is not good for ggplot
 output <- as.data.table(output$emmeans) # reformatting into one table
 output # this is better

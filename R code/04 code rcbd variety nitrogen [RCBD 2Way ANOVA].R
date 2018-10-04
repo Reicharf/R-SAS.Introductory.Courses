@@ -37,10 +37,8 @@ autoplot(mod3) # Residual plots
 mod3           # Basic results
 summary(mod3)  # More detailed results
 
-# get adj. means for Variety effect and compare
-#install.packages("multcompView")
 #install.packages("emmeans")
-library(emmeans) # also needs package multcompView to be installed
+library(emmeans)
 
 # get means and comparisons
 means  <- emmeans(mod, pairwise ~ Variety, adjust = "tukey") # to get t-test: adjust="none"
@@ -49,7 +47,7 @@ means$emmeans   # look at means
 means$contrasts # look at comparions
 
 # add letters indicating significant differences
-output <- cld(means$emmeans, details=T, Letters = letters)
+output <- CLD(means$emmeans, details=T, Letters = letters)
 
 # plot adjusted means
 #install.packages("ggplot2")

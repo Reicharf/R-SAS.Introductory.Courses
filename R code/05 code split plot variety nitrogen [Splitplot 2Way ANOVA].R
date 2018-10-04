@@ -60,9 +60,7 @@ mod          # Basic results
 summary(mod) # More detailed results
 
 # get adj. means for Variety effect and compare
-#install.packages("multcompView")
-#install.packages("emmeans")
-library(emmeans) # also needs package multcompView to be installed
+library(emmeans)
 
 # get means and comparisons
 means <- emmeans(mod, pairwise ~ N | Var, adjust = "tukey") # to get t-test: adjust="none"
@@ -74,7 +72,7 @@ means # look at means and comparisons
 means$emmeans   # look at means
 means$contrasts # look at comparions
 
-output <- cld(means$emmeans, details=T, Letters = letters)
+output <- CLD(means$emmeans, details=T, Letters = letters)
 output # this data format is not good for ggplot
 output <- as.data.table(output$emmeans) # reformatting into one table
 output # this is better

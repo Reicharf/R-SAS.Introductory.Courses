@@ -26,8 +26,6 @@ mod           # Basic results
 summary(mod)  # More detailed results
 anova(mod)    # ANOVA-table: Variety effect is significant
 
-#install.packages("multcompView")
-#install.packages("emmeans")
 library(emmeans) # also needs package multcompView to be installed
 
 # get means and comparisons
@@ -37,7 +35,7 @@ means$emmeans   # look at means
 means$contrasts # look at differences between means
 
 # add letters indicating significant differences between means
-output <- cld(means$emmeans, details=T, Letters=letters)
+output <- CLD(means$emmeans, details=T, Letters=letters)
 
 # plot adjusted means
 
