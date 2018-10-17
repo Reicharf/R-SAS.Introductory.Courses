@@ -1,6 +1,6 @@
 ## Welcome to the "Statistical Analyses with R/SAS" introductory course GitHub
 
-Here you can find the example datasets as well as the latest codes applied in the courses. Please go to the respective folder above.
+Here you can find the example datasets as well as the latest codes applied in the courses. Please go to the respective folder above. The code has more comments than the one in the course. Note that in addition, I am creating a website https://schmidtpaul.github.io/crashcouRse/index.html
 
 ### How to join a course
 Please follow these two steps to register for any of the future courses:
@@ -16,9 +16,6 @@ We expect that your supervisor is informed about the fact that you will be consu
 * Filippo Capezzone: filippo.capezzone@uni-hohenheim.de
 * Dr. Jens Möhring: moehring@uni-hohenheim.de
 * Prof. Dr. Piepho: piepho@uni-hohenheim.de
-
-
-https://schmidtpaul.github.io/crashcouRse/index.html
 
 <br /> <br/>
 Don't hesitate to contact me about any of this.
