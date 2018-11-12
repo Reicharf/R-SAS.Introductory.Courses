@@ -6,14 +6,14 @@ Note that you will find more examples than we analyzed in the course. I am curre
 Dataset | SAS Code | R Code | [Website](https://schmidtpaul.github.io/crashcouRse/index.html) 
 --------|----------|--------|---------
 
-beet | yes | yes | | 
+beet | yes | yes | 
 bugs | | | [ja](https://schmidtpaul.github.io/crashcouRse/1F_latsq_poisson.html) |
 carrot | | | [ähnlich](https://schmidtpaul.github.io/crashcouRse/1F_rcbd_binomial.html) |
 drinks | yes | yes | |
 lemna | | | [ähnlich](https://schmidtpaul.github.io/crashcouRse/1F_rcbd_messwdh.html) |
 maize | | | |
 met | | | |
-oats | | | |
+oats | | | [ähnlich](https://schmidtpaul.github.io/crashcouRse/2F_splitplot.html) |
 potatoe | | | |
 potatoes | | | |
 rice rcbd | | | [ja](https://schmidtpaul.github.io/crashcouRse/2F_rcbd.html) |
