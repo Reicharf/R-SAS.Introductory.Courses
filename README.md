@@ -29,6 +29,6 @@ wheat | | | [ja](https://schmidtpaul.github.io/crashcouRse/1F_rcbd_binomial.html
 Don't hesitate to contact me about any of this.
 
 Paul Schmidt <br />
-paul.schmidt@uni-hohenheim.de, 
+schmidtpaul@hotmail.de, 
 [LinkedIn](https://www.linkedin.com/in/schmidtpaul1989/), 
 [ResearchGate](https://www.researchgate.net/profile/Paul_Schmidt17)
