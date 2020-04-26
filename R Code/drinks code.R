@@ -1,6 +1,6 @@
 # Usual first lines of code for any project:
 rm(list=ls()) # Clean up environment
-setwd("D:/RKurse/newKurs/Daten") # Set working directory
+setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Daten") # Set working directory
 library(data.table)
 dataset <- fread("drinks (other) LM.txt") # Import file
 

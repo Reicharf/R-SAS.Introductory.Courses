@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd("D:/RKurse/newKurs/Daten")
+setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Daten")
 library(data.table)
 dat <- fread("sorghum (1F rcbd repmes) GLS.txt")
 

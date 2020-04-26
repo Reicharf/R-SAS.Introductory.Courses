@@ -34,7 +34,7 @@ max(x)  # largest value in x
 ################
 # Handling Data
 ################
-setwd("D:/RKurse/newKurs/Daten") # set your working directory
+setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Daten") # set your working directory
 library(data.table) # activate data.table package from library (package must be installed first)
 # data.table is an optional additional package which lets you do multiple convenient things with your data. 
 data <- fread("species (other).txt") # import txt file

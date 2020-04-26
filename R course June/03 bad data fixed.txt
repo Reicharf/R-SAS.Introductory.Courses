@@ -1,0 +1,30 @@
+Person	Ages	Gender	Civilstate	Height	Profession	Vision	Distance	Percdist
+Andrés	25	M	S	180	Student	10	1,5	15
+Anja	29	F	S	168	Professional	10	4,5	45
+Armando	31	M	S	169	Professional	9	4,5	50
+Carlos	25	M	M	185	Professional	8	6	75
+Cristina	23	F		170	Student	10	3	30
+Delfa	39	F	M	158	Professional	6	4,5	75
+Eduardo	28	M	S	166	Professional	8	4,5	56,25
+Enrique					Professional		6	
+Fanny	25	F	M	164	Student	9	3	33,33333333
+Francisco	46	M	M	168	Professional	8	4,5	56,25
+Franklin	55	M	M	165	Professional	7	4,5	64,28571429
+Hannele	22	F	S	161	Student	10	1,5	15
+Henrry	28	M	S	168	Professional	10	6	60
+Iván	29	M	S	169	Professional	8	3	37,5
+Jaime	23	M	M	190	Student	9	1,5	16,66666667
+Josué	25	M	S	175	Student	10	1,5	15
+Lorena	26	F	M	168	Student	7	3	42,85714286
+Marco	28	M	S	175	Professional	10	1,5	15
+Maria Augusta	25	F	S	163	Student	10	3	30
+Marina	25	F	S	166	Student	10	3	30
+Marta	47	F	S	152	Professional	7	1,5	21,42857143
+Nora	50	F	M	145	Professional	6	6	100
+Pablo	24	M	S	172	Student	9	3	33,33333333
+Pablo	49	M	M	165	Professional	6	4,5	75
+Patricia	25	F	S	152	Student	7	3	42,85714286
+Raúl	26	M	S	178	Professional	9	1,5	16,66666667
+Rolando	26	M	M	180	Professional	3	4,5	150
+Silvio	27	M	S	168	Professional	8	4,5	56,25
+Victor	26	M	S	170	Professional	10	1,5	15

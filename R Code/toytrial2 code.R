@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd("D:/RKurse/newKurs/Daten")
+setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Daten")
 library(data.table)
 rcbd <- fread("toytrial2 (1F rcbd) LM.txt")
 

@@ -1,0 +1,10 @@
+Variety	Replicate	Yield
+Var_A	1	197.61
+Var_A	2	205.89
+Var_A	3	202.42
+Var_B	1	215.07
+Var_B	2	220.16
+Var_B	3	218.04
+Var_C	1	182.86
+Var_C	2	203.25
+Var_C	3	201.19

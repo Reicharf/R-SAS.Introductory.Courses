@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd("D:/RKurse/newKurs/Daten")
+setwd("D:/Hohenheim/R-SAS.Introductory.Courses/Daten")
 library(data.table)
 beet <- fread("beet (1F rcbd polynom) LM.txt")
 
